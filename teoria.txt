@@ -1,0 +1,48 @@
+VIDEO 23 - TEORIA/EJEMPLOS
+
+    Autoload en POO con PHP
+En lugar de tener que cargar cada una de las clases de nuestra
+aplicacion manualmente, PODEMOS CREAR UN AUTOLOADER. Como su 
+nombre lo indica, el autoloader esta destinado a CARGAR DE 
+FORMA AUTOMATICA LAS CLASES
+
+Cada vez que se intenta inicializar una clase y la clase no 
+existe, EL NOMBRE DE ETA CLASE SE PASA AL AUTOLOADER Y ES 
+EJECUTADO. En el autoloader podremos automatizar el proceso de
+cargar SIN TENER QUE INCLUIR MANUALMENTE CADA ARCHIVO y ademas
+nos permite hacer el codigo mas rapido, pues solo se cargaran
+las clases que efectualmente se utilicen.
+
+### ¿Por qué necesitamos un autoloader? ###
+Imagina que tienes una aplicación con muchas clases diferentes.
+Sin un autoloader, tendrías que hacer algo como esto:
+
+require 'classes/Usuario.php';
+require 'classes/Producto.php';
+require 'classes/Orden.php';
+
+// Usar las clases
+$usuario = new Usuario();
+$producto = new Producto();
+$orden = new Orden();
+Esto puede volverse muy complicado y propenso a errores a medida
+que tu aplicación crece.
+
+¿Cómo funciona un autoloader?
+Un autoloader resuelve este problema cargando automáticamente la 
+clase que necesitas en el momento en que la usas por primera vez.
+
+#### ¿Como crearlo? ####
+PASO 1_ Creamos un archivo en la raiz, en este caso dentro de la
+        carpeta CRUD, llamado "autoload.php".
+
+PASO 2_ En el archivo index.php lo incluimos el archivo creado en
+        el paso anterior, con un requise_once.
+
+PASO 3_ En autoload.php llamamos la funcion "spl_autoload_register"
+        nativa de php, que esta funcion registra una funcion en php
+        llamara automaticamente cada vez que intentes usar una clase
+        que no ha sido definida aun.
+        La funcion que le pasaremos a "spl_autoload_register", toma
+        el nombre de la clase , y construye la ruta al archivo corres
+        pondiente y lo incluye
