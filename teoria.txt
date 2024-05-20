@@ -46,3 +46,9 @@ PASO 3_ En autoload.php llamamos la funcion "spl_autoload_register"
         La funcion que le pasaremos a "spl_autoload_register", toma
         el nombre de la clase , y construye la ruta al archivo corres
         pondiente y lo incluye
+
+PASO 4_ Creamos una variable archivo, donde guardaremos la direccion
+        del archivo donde se encuentra la clase a utilizar
+
+
+VIDEO 24 - TEORIA/EJEMPLOS
