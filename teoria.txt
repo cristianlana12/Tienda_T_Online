@@ -52,3 +52,21 @@ PASO 4_ Creamos una variable archivo, donde guardaremos la direccion
 
 
 VIDEO 24 - TEORIA/EJEMPLOS
+
+Creamos la plantilla PHP base del SISTEMA
+donde crearemos dos archivos llamados head.php y script.php
+donde el head.php tendra para finalidades practicas en la organizacion de carpetas
+todo el contenido de head del html5
+
+VIDEO 25 - TEORIA/EJEMPLOS
+
+ARCHIVO de INICIO de SESION en PHP session_start()
+Donde aqui crearemos el archivo session_start.php en la carpeta
+inc ubicada en views, y incluiremos este archivo en el index.php despies
+de todas las inclusiones de archivos, puesto que necesitamos la variable
+APP_SESSION_NAME del archivo app.php
+
+donde en el archivo session_start.php usaremos el siguiente para iniciar 
+la sesion       session_name(APP_SESION_NAME);
+                session_start();
+Donde se creara una cookie de sesion en el navegador
