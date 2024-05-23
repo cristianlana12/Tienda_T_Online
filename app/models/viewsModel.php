@@ -1,9 +1,7 @@
 <?php
 namespace App\Models; //espacio de trabajo
-
 //cuando usamos MVC los modelos y controladores trabajan en conjunto 
 //Entonces debemos crear un controlador para este respectivo modelo
-
 class viewsModel
 {
     //Creamos el metodo de tipo protected donde es una function 

@@ -85,3 +85,20 @@ VIDEO 28 TEORIA/EJEMPLOS
 Creamos modelo y controlador de un modelo y controlador para las vistas
 Como primer paso, en la carpeta models creamos el archivo viewsModel.php
 donde haremos un namespace 
+
+VIDEO 29 TEORIA/EJEMPLOS
+Creamos y nombramos un modelo para la vista 
+
+VIDEO 30 TEORIA/EJEMPLOS
+Creamos y nombreamos un controlador para la vista
+
+VIDEO 31 TEORIA/EJEMPLOS
+¿Como APLICAR un MODELO y CONTROLADOR (MVC) en PHP?
+En el archivo index.php usamos la clase viewsControllers 
+donde la instanciamos una variable y le asiganamos la funcion
+obtenerVistasControlador y le mandamos la variable URL con la posicion 0
+donde url nos devolvia la direccion del archivo en que estamos parados
+en forma de arreglo donde la pos 0 es login o un string con la ubicacion del archivo 
+
+VIDEO 32 TEORIA/EJEMPLOS
+Creamos barra de navegacion con TaildWind
