@@ -78,3 +78,10 @@ VIDEO 26 -TEORIA/EJEMPLOS
 VIDEO 27 - TEORIA/EJEMPLOS
 
 Descargando el plugin SweetAlert2 para mostrar tarjetas de alerta.
+
+
+VIDEO 28 TEORIA/EJEMPLOS
+
+Creamos modelo y controlador de un modelo y controlador para las vistas
+Como primer paso, en la carpeta models creamos el archivo viewsModel.php
+donde haremos un namespace 
