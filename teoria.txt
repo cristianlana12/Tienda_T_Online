@@ -70,3 +70,11 @@ donde en el archivo session_start.php usaremos el siguiente para iniciar
 la sesion       session_name(APP_SESION_NAME);
                 session_start();
 Donde se creara una cookie de sesion en el navegador
+
+
+VIDEO 26 -TEORIA/EJEMPLOS
+
+
+VIDEO 27 - TEORIA/EJEMPLOS
+
+Descargando el plugin SweetAlert2 para mostrar tarjetas de alerta.
