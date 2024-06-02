@@ -30,6 +30,7 @@ if (isset($_GET['views'])) {
     if ($vista == "login" || $vista == "404") { //En caso de que tenga la vista el login o 404 manda toda la ruta que teniamos de nuevo
         require_once("./app/views/content/" . $vista . "-view.php");
     }else{ //En caso que las dos condiciones mandamos la vista completa ya que trae toda la ruta
+        require_once("./app/views/inc/navbar.php");
         require_once($vista);
     }
     require_once ("./app/views/inc/script.php");
