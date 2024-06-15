@@ -102,3 +102,7 @@ en forma de arreglo donde la pos 0 es login o un string con la ubicacion del arc
 
 VIDEO 32 TEORIA/EJEMPLOS
 Creamos barra de navegacion con TaildWind
+
+
+VIDEO 33 TEORIA/EJEMPLOS
+ Creando VISTAS de LOGIN y 404 PAGINA NO ENCONTRADA
