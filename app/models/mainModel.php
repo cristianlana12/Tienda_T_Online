@@ -71,6 +71,53 @@ class mainModel
 
         return $cadena;
     }
+
+    //MODELO o FUNCION: que verifica que los datos enviados, estan con el formato solicitado que definiremos en el formulario en el codigo html
+    protected function verificarDatos($filtro, $cadena)
+    {
+        //preg_match() Funcion nativa de php que nos permite hacer una comparacion con una exprecion regular / ^(EXPRECION REGULAR)$ /  ==> Si el string coincide con la exprecion regular quiere decir que no existe problema
+        if (preg_match("/^" . $filtro . "$/", $cadena)) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    protected function guardarDatos($tabla, $datos)
+    {
+        $query = "INSERT INTO $tabla (";
+
+        $C = 0;
+        foreach ($datos as $clave) {
+            if ($C >= 1) {
+                $query .= ",";
+            }
+            $query .= $clave["campo_nombre"];
+            $C++;
+        }
+
+        $query .= ")VALUE(";
+
+        $C = 0;
+        foreach ($datos as $clave) {
+            if ($C >= 1) {
+                $query .= ",";
+            }
+            $query .= $clave["campo_marcador"];
+            $C++;
+        }
+        $query .= ")";
+
+        $sql =$this->conectar()->prepare($query);
+
+        foreach ($datos as $clave) {
+            $sql->bindParam($clave["campo_marcador"], $clave["campo_valor"]);
+        }
+
+        $sql->execute();
+
+        return $sql;
+    }
 }
 
-?>
