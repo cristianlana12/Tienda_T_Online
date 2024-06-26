@@ -29,6 +29,48 @@ class mainModel
         $sql->execute(); //Con esto ejecutamos la consulta
         return $sql;
     }
+
+    //MODELO o FUNCION: que evitara las inyecciones SQL (Funciona como filtro - usaremos funciones preparadas - identificar expreciones regulares)
+
+    public function limpiarCadena($cadena)
+    {
+        $palabras = [
+            "<script>",
+            "</script>",
+            "<script src",
+            "<script type=",
+            "SELECT * FROM",
+            "DELETE FROM",
+            "INSERT INTO",
+            "DROP TABLE",            //Cada una de las componenetes de este arreglo, seran las cadenas que no permitiremos en los datos del formulairo
+            "DROP DATABASE",
+            "TRUNCATE TABLE",
+            "SHOW TABLES",
+            "SHOW DATABASES",
+            "<?php",
+            "?>",
+            "--",
+            "^",
+            "<",
+            ">",
+            "==",
+            "=",
+            ";",
+            "::"
+        ];
+
+        $cadena = trim($cadena); //Funcion nativa de php que elimina los espacion en blanco
+        $cadena = stripslashes($cadena); //Funcion nativa de php que elimina las barras de un string
+
+        foreach ($palabras as $palabra) {
+            $cadena = str_ireplace($palabra, "", $cadena); //Funcion nativa que busca y quita la palabra que recibe como parametro
+        }
+
+        $cadena = trim($cadena);             //Se repide estos dos pasos por lo que haya quedado algun espacio en blando o barras invertidos
+        $cadena = stripslashes($cadena);
+
+        return $cadena;
+    }
 }
 
 ?>
