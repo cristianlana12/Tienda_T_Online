@@ -122,13 +122,16 @@ class mainModel
 
     public function seleccionarDatos($tipo, $tabla, $campo, $id){
         $tipo = $this->limpiarCadena($tipo);
-        $tabla = $this->limpiarCadena($tabla);
+        $tabla = $this->limpiarCadena($tabla); //para evitar inyecciones sql 
         $campo = $this->limpiarCadena($campo);
         $id = $this->limpiarCadena($id);
-        if ($tipo == "Unico") {
+        if ($tipo == "Unico") { //si el tipo es unico
+            //preparamos la consulta - para seleccionar todos los campos de la tabla que tengan de campo id
             $sql = $this->conectar()->prepare("SELECT * FROM $tabla WHERE $campo =:ID");
+            
             $sql->bindParam(":ID", $id);
         }elseif($tipo == "Normal"){
+            //aqui solo seleccionara los parametros de campo
             $sql = $this->conectar()->prepare("SELECT $campo FROM $tabla");
         }
 
@@ -136,5 +139,27 @@ class mainModel
 
         return $sql;
     }
-}
 
+    protected function actualizarDatos($tabla, $datos, $condicion){
+      
+        $query = "UPDATE $tabla SET ";
+                
+        $C = 0;
+        foreach ($datos as $clave) {
+            if ($C >= 1) {
+                $query .= ",";
+            }
+            $query .= $clave["campo_nombre"]."=".$clave["campo_marcador"];
+            $C++;
+        }
+
+        $query .= "WHERE ".$condicion["condicion_campo"]."=".$condicion["condicion_marcador"];
+        $sql = $this->conectar()->prepare($query);
+
+        foreach ($datos as $clave) {
+            $sql->bindParam($clave["campo_marcador"], $clave["campo_valor"]);
+        }
+        $sql->bindParam($condicion["condicion_marcador"], $condicion["condicion_valor"]);
+        return $sql;
+    }
+}
